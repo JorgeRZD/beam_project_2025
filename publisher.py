@@ -13,6 +13,7 @@ if __name__ == "__main__":
     path_service_account = (
         r"C:\Users\JRZR\Desktop\lustrous-strand-468405-u8-5dfd46f025f4.json"
     )
+
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = path_service_account
 
     # Replace 'my-input-file-path' with your input file path
