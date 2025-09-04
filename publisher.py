@@ -12,12 +12,14 @@ if __name__ == "__main__":
 
     # Replace 'my-service-account-path' with your service account path
     load_dotenv()
-    path_service_account = os.getenv("api_key_loc")
+    path_service_account = (
+        "C:/Users/JRZR/Desktop/lustrous-strand-468405-u8-5dfd46f025f4.json"
+    )
 
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = path_service_account
 
     # Replace 'my-input-file-path' with your input file path
-    input_file = r"C:/Users/JRZR/Documents/python_scripts/beam_project_2025/counts.csv"
+    input_file = "C:/Users/JRZR/Documents/python_scripts/beam_project_2025/counts.csv"
 
     # create publisher
     publisher = pubsub_v1.PublisherClient()

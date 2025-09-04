@@ -2,18 +2,21 @@ import apache_beam as beam
 from apache_beam.options.pipeline_options import PipelineOptions, StandardOptions
 import os
 from apache_beam import window
+from dotenv import load_dotenv
 
-
+load_dotenv()
+path_service_account = (
+    "C:/Users/JRZR/Desktop/lustrous-strand-468405-u8-5dfd46f025f4.json"
+)
 # Replace 'my-service-account-path' with your service account path
-service_account_path = "my-service-account-path"
-print("Service account file : ", service_account_path)
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = service_account_path
+print("Service account file : ", path_service_account)
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = path_service_account
 
 # Replace 'my-input-subscription' with your input subscription id
-input_subscription = "my-input-subscription"
+input_subscription = "projects/quick-processor-468404-r8/subscriptions/test-sub-1"
 
 # Replace 'my-output-subscription' with your output subscription id
-output_topic = "my-output-subscription"
+output_topic = "projects/quick-processor-468404-r8/topics/Test-topic-2"
 
 options = PipelineOptions()
 options.view_as(StandardOptions).streaming = True
