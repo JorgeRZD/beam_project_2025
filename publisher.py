@@ -1,6 +1,7 @@
 import os
 import time
 from google.cloud import pubsub_v1
+from dotenv import load_dotenv
 
 if __name__ == "__main__":
     # Replace 'my-project' with your project id
@@ -10,9 +11,8 @@ if __name__ == "__main__":
     pubsub_topic = "projects/quick-processor-468404-r8/topics/Test-topic"
 
     # Replace 'my-service-account-path' with your service account path
-    path_service_account = (
-        r"C:/Users/JRZR/Desktop/lustrous-strand-468405-u8-5dfd46f025f4.json"
-    )
+    load_dotenv()
+    path_service_account = os.getenv("api_key_loc")
 
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = path_service_account
 
