@@ -11,3 +11,4 @@ source /c/Users/JRZR/Documents/python_scripts/mybeamproject_env/Scripts/activate
 #pip install apache_beam
 #pip install google-cloud-pubsub
 #pip install google.cloud
+#pip install --upgrade google-cloud-storage

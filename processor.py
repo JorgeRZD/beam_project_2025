@@ -15,6 +15,7 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = path_service_account
 # Replace 'my-input-subscription' with your input subscription id
 input_subscription = "projects/quick-processor-468404-r8/subscriptions/test-sub-1"
 
+
 # Replace 'my-output-subscription' with your output subscription id
 output_topic = "projects/quick-processor-468404-r8/topics/Test-topic-2"
 
