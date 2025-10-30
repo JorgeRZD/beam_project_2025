@@ -4,3 +4,4 @@ Practice project to set a data stream and processing pipeline in Google Cloud Pl
 - Pub/Sub
 - Dataflow
 - BigQuery
+- Google Cloud Storage
