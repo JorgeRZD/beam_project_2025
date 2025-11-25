@@ -3,6 +3,8 @@ from apache_beam.options.pipeline_options import PipelineOptions, StandardOption
 import os
 from apache_beam import window
 from dotenv import load_dotenv
+import csv
+from io import StringIO
 
 load_dotenv()
 path_service_account = (
@@ -15,12 +17,19 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = path_service_account
 # Replace 'my-input-subscription' with your input subscription id
 input_subscription = "projects/quick-processor-468404-r8/subscriptions/test-sub-1"
 
-
 # Replace 'my-output-subscription' with your output subscription id
 output_topic = "projects/quick-processor-468404-r8/topics/Test-topic-2"
 
+
+def clean_message(message):
+    decodedMessage = message.decode("utf-8")
+    cleanedMessage = decodedMessage.replace("\r", "").replace("\n", "")
+    return cleanedMessage.encode("utf-8")
+
+
 options = PipelineOptions()
 options.view_as(StandardOptions).streaming = True
+
 
 p = beam.Pipeline(options=options)
 
@@ -30,7 +39,8 @@ output_file = "outputs/part"
 pubsub_data = (
     p
     | "Read from pub sub" >> beam.io.ReadFromPubSub(subscription=input_subscription)
-    | "Write to pus sub" >> beam.io.WriteToPubSub(output_topic)
+    | "Clean data" >> beam.Map(clean_message)
+    | "Write to pub sub" >> beam.io.WriteToPubSub(output_topic)
 )
 
 result = p.run()

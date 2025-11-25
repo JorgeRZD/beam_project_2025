@@ -19,7 +19,7 @@ if __name__ == "__main__":
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = path_service_account
 
     # Replace 'my-input-file-path' with your input file path
-    input_file = "C:/Users/JRZR/Documents/python_scripts/beam_project_2025/counts.csv"
+    input_file = "C:/Users/JRZR/Documents/python_scripts/beam_project_2025/registry.csv"
 
     # create publisher
     publisher = pubsub_v1.PublisherClient()
@@ -33,4 +33,4 @@ if __name__ == "__main__":
             event_data = line  # entire line of input CSV is the message
             print("Publishing {0} to {1}".format(event_data, pubsub_topic))
             publisher.publish(pubsub_topic, event_data)
-            time.sleep(4)
+            time.sleep(2)

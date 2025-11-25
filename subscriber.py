@@ -20,7 +20,8 @@ if __name__ == "__main__":
     subscriber = pubsub_v1.SubscriberClient()
 
     def callback(message):
-        print(("Received message: {}".format(message)))
+        data = message.data.decode("utf-8")
+        print(("Received message: {}".format(data)))
         message.ack()
 
     subscriber.subscribe(subscription_path, callback=callback)
